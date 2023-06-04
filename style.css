@@ -1,13 +1,29 @@
 @import "reset.css";
-@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --container-width: 1200px;
+}
 
 body {
     font-family: "Geologica", Arial, sans-serif;
+    font-weight: 500;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
 }
 
 .container {
     padding: 0 20px;
-    max-width: 1200px;
+    max-width: var(--container-width);
     margin-inline: auto;
 }
 
@@ -16,19 +32,13 @@ body {
     background-color: lightgrey;
 }
 
-.add-button {
-    display: block;
-    margin-inline: auto;
-}
-
 .logo {
-    font-weight: 500;
     font-size: 2rem;
 }
 
 .library {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -36,4 +46,148 @@ body {
     padding: 1rem;
     text-align: center;
     background-color: lightgrey;
+}
+
+.mask {
+    background-color: rgba(0, 0, 0, 0.8);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 24px;
+    padding: 1em 1.4em;
+    padding-top: 1.8em;
+    background-color: #fff;
+    border-radius: 15px;
+
+    display: grid;
+    gap: 0.6em;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close svg {
+    box-sizing: content-box;
+    padding: 8px;
+    width: 2rem;
+    aspect-ratio: 1;
+}
+
+.close svg:hover {
+    fill: red;
+}
+
+.field {
+    display: grid;
+    gap: 0.2em;
+}
+
+/* Visually hiding label so that assistive technologies still work */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.statusCheckbox {
+    --bg: lightcoral;
+    appearance: none;
+
+    width: 100%;
+    border-radius: 5px;
+    margin: 0;
+    height: 1.6em;
+
+    background-color: var(--bg);
+
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+
+    cursor: pointer;
+}
+
+.statusCheckbox::before {
+    content: "Not read";
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+.statusCheckbox:checked {
+    --bg: lightgreen;
+}
+
+.statusCheckbox:hover {
+    box-shadow: 0 0 10px var(--bg);
+}
+
+.statusCheckbox:checked::before {
+    content: "Read";
+}
+
+.add-button,
+.submit-button {
+    background-color: lightgrey;
+    border: none;
+    border-radius: 5px;
+
+    display: block;
+
+    font-family: inherit;
+}
+
+.statusCheckbox,
+.add-button,
+.submit-button {
+    transition: 0.3s ease;
+}
+
+.add-button:hover,
+.submit-button:hover {
+    cursor: pointer;
+}
+
+.add-button {
+    margin: 2em auto;
+    padding: 1em 2em;
+
+    font-size: 20px;
+}
+
+.add-button:hover {
+    box-shadow: 0 0 10px grey;
+}
+
+.submit-button {
+    padding: 0.2em;
+    font-size: 0.9em;
+}
+
+.submit-button:hover {
+    box-shadow: 0 0 10px grey;
 }

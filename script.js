@@ -23,7 +23,9 @@ addBookToLibrary("Think Like a Programmer", "Anton Spraul",  260, false);
 
 const library = document.querySelector("#library");
 // Render all objects from the array on page
-function renderLibrary() {
+function renderLibrary(myLibrary) {
+    library.innerHTML = "";
+
     for (const book of myLibrary) {
         const card = createBookCard(book.title, book.author, book.pages, book.read);
         library.appendChild(card)
@@ -54,4 +56,40 @@ function createBookCard(title, author, pages, read) {
     return card;
 }
 
-renderLibrary();
+const mask = document.querySelector("#mask");
+const addBookBtn = document.querySelector("#addBook");
+addBookBtn.addEventListener("click", () => {
+    mask.classList.remove("hidden");
+});
+
+const closeBtn = document.querySelector("#close");
+closeBtn.addEventListener("click", () => {
+    mask.classList.add("hidden");
+});
+
+function getData() {
+    const title = document.querySelector("#title").value;
+    const author = document.querySelector("#author").value;
+    const pages = document.querySelector("#pages").value;
+    const status = document.querySelector("#status").checked;
+    return {
+        title: title,
+        author: author,
+        pages: pages,
+        read: status,
+    };
+}
+
+const form = document.querySelector("#form");
+const formBtn = document.querySelector("#formBtn");
+formBtn.addEventListener("click", e => {
+    e.preventDefault();
+
+    const book = getData();
+    addBookToLibrary(book.title, book.author, book.pages, book.read);
+    renderLibrary(myLibrary);
+
+    mask.classList.add("hidden");
+});
+
+renderLibrary(myLibrary);

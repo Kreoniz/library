@@ -16,6 +16,35 @@
     <main class="page container">
         <button id="addBook" class="add-button" type="button">Add a Book</button>
 
+        <div id="mask" class="hidden mask">
+            <form class="form" id="form" action="#">
+                <button type="button" class="close" id="close">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+                </button>
+                <div class="field">
+                    <label for="title">Title</label>
+                    <input id="title" type="text">
+                </div>
+
+                <div class="field">
+                    <label for="author">Author</label>
+                    <input id="author" type="text">
+                </div>
+
+                <div class="field">
+                    <label for="pages">Pages</label>
+                    <input id="pages" type="number">
+                </div>
+
+                <div class="field">
+                    <label hidden class="visuallyhidden" for="status">Status</label>
+                    <input checked class="statusCheckbox" type="checkbox" name="status" id="status">
+                </div>
+
+                <button id="formBtn" class="submit-button" type="submit">Add this book</button>
+            </form>
+        </div>
+
         <div id="library" class="library"></div>
     </main>
 
