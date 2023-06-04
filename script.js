@@ -82,14 +82,14 @@ function getData() {
 
 const form = document.querySelector("#form");
 const formBtn = document.querySelector("#formBtn");
-formBtn.addEventListener("click", e => {
-    e.preventDefault();
-
+form.addEventListener("submit", e => {
     const book = getData();
     addBookToLibrary(book.title, book.author, book.pages, book.read);
     renderLibrary(myLibrary);
 
     mask.classList.add("hidden");
+
+    e.preventDefault();
 });
 
 renderLibrary(myLibrary);
