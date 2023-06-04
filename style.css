@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+button {
+    border: none;
+}
+
 :root {
     --container-width: 1200px;
 }
@@ -43,9 +47,14 @@ body {
 }
 
 .book-card {
-    padding: 1rem;
+    font-size: 20px;
+
+    padding: 1em;
     text-align: center;
     background-color: lightgrey;
+
+    display: grid;
+    gap: 1em;
 }
 
 .mask {
@@ -80,7 +89,6 @@ body {
     top: 1rem;
 
     background: none;
-    border: none;
     cursor: pointer;
 }
 
@@ -153,7 +161,6 @@ body {
 .add-button,
 .submit-button {
     background-color: lightgrey;
-    border: none;
     border-radius: 5px;
 
     display: block;
@@ -163,7 +170,8 @@ body {
 
 .statusCheckbox,
 .add-button,
-.submit-button {
+.submit-button,
+.remove-button {
     transition: 0.3s ease;
 }
 
@@ -189,5 +197,23 @@ body {
 }
 
 .submit-button:hover {
+    box-shadow: 0 0 10px grey;
+}
+
+.remove-button {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 300;
+
+    background-color: white;
+    border-radius: 5px;
+
+    padding: 0.5em 0;
+
+    transition: 0.3s;
+}
+
+.remove-button:hover {
+    cursor: pointer;
     box-shadow: 0 0 10px grey;
 }
