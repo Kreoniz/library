@@ -20,6 +20,10 @@ body {
     font-weight: 500;
 }
 
+.page {
+    margin-bottom: 2rem;
+}
+
 .hidden {
     display: none;
     visibility: hidden;
@@ -63,7 +67,7 @@ body {
 .mask {
     background-color: rgba(0, 0, 0, 0.8);
 
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;

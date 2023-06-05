@@ -121,11 +121,11 @@ function getData() {
 }
 
 const form = document.querySelector("#form");
-const formBtn = document.querySelector("#formBtn");
 form.addEventListener("submit", e => {
     const book = getData();
     addBookToLibrary(book.title, book.author, book.pages, book.read);
     renderLibrary(myLibrary);
+    form.reset();
 
     mask.classList.add("hidden");
 
