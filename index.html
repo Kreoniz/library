@@ -23,25 +23,25 @@
                 </button>
                 <div class="field">
                     <label for="title">Title</label>
-                    <input required id="title" type="text">
+                    <input required maxlength="50" id="title" type="text">
                 </div>
 
                 <div class="field">
                     <label for="author">Author</label>
-                    <input required id="author" type="text">
+                    <input required maxlength="20" id="author" type="text">
                 </div>
 
                 <div class="field">
                     <label for="pages">Pages</label>
-                    <input required id="pages" type="number">
+                    <input required max="100000" id="pages" type="number">
                 </div>
 
                 <div class="field">
                     <label hidden class="visuallyhidden" for="status">Status</label>
-                    <input checked class="status-checkbox" type="checkbox" name="status" id="status">
+                    <input checked class="status-checkbox form-button" type="checkbox" name="status" id="status">
                 </div>
 
-                <button id="formBtn" class="submit-button" type="submit">Add this book</button>
+                <button id="formBtn" class="submit-button form-button" type="submit">Add this book</button>
             </form>
         </div>
 

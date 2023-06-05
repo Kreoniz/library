@@ -48,38 +48,16 @@ body {
 
 .book-card {
     font-size: 20px;
+    word-break: break-word;
 
     padding: 1em;
+    border-radius: 5px;
     text-align: center;
     background-color: lightgrey;
 
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 1em;
-}
-
-.book-card-status {
-    border-radius: 5px;
-    padding: 0.4em 0;
-
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-
-    background-color: var(--bg);
-
-    cursor: pointer;
-}
-
-.book-card-status.read {
-    --bg: lightgreen;
-}
-
-.book-card-status.not-read {
-    --bg: lightcoral;
-}
-
-.book-card-status:hover {
-    box-shadow: 0 0 10px var(--bg);
 }
 
 .mask {
@@ -152,7 +130,6 @@ body {
     width: 100%;
     border-radius: 5px;
     margin: 0;
-    height: 1.6em;
 
     background-color: var(--bg);
 
@@ -200,6 +177,10 @@ body {
     transition: 0.3s ease;
 }
 
+.form-button {
+    height: 1.6em;
+}
+
 .add-button:hover,
 .submit-button:hover {
     cursor: pointer;
@@ -217,28 +198,58 @@ body {
 }
 
 .submit-button {
-    padding: 0.2em;
-    font-size: 0.9em;
+    font-size: inherit;
 }
 
 .submit-button:hover {
     box-shadow: 0 0 10px grey;
 }
 
-.remove-button {
+.card-info {
+    flex: 1 0 auto;
+
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-buttons {
+    display: grid;
+    gap: 0.6em;
+}
+
+.card-button {
     font-family: inherit;
     font-size: inherit;
-    font-weight: 300;
 
-    background-color: white;
     border-radius: 5px;
-
-    padding: 0.5em 0;
+    padding: 0.4em 0;
 
     transition: 0.3s;
 }
 
-.remove-button:hover {
+.card-button:hover {
     cursor: pointer;
     box-shadow: 0 0 10px grey;
+}
+
+.remove-button {
+    font-weight: 300;
+
+    background-color: white;
+}
+
+.book-card-status {
+    font-weight: inherit;
+
+    background-color: var(--bg);
+}
+
+.book-card-status.read {
+    --bg: lightgreen;
+}
+
+.book-card-status.not-read {
+    --bg: lightcoral;
 }

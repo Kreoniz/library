@@ -16,9 +16,6 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(book);
 }
 
-addBookToLibrary("Title", "Author", 100, false);
-addBookToLibrary("The Hobbit", "J. R. R. Tolkien",  295, false);
-addBookToLibrary("Demian", "Hermann Hesse",  390, true);
 addBookToLibrary("Think Like a Programmer", "Anton Spraul",  260, false);
 
 const library = document.querySelector("#library");
@@ -28,62 +25,74 @@ function renderLibrary(myLibrary) {
 
     for (let i = 0; i < myLibrary.length; i++) {
         const book = myLibrary[i];
-        const card = createBookCard(book.title, book.author, book.pages, book.read);
+        const card = createBookCard(i, book.title, book.author, book.pages, book.read);
         card.querySelector("button").dataset.index = i;
-        card.dataset.index = i;
         library.appendChild(card)
     }
 }
 
 // Create an HTML element with book info
-function createBookCard(title, author, pages, read) {
+function createBookCard(index, title, author, pages, read) {
     const card = document.createElement("div");
+    card.classList.add("book-card");
+
     const cardTitle = document.createElement("div");
+    cardTitle.classList.add("book-card-title");
+
     const cardAuthor = document.createElement("div");
+    cardAuthor.classList.add("book-card-author");
+
     const cardPages = document.createElement("div");
+    cardPages.classList.add("book-card-pages");
+
     const cardStatus = document.createElement("button");
+    cardStatus.classList.add("book-card-status", "card-button");
+
+    const cardInfo = document.createElement("dic");
+    cardInfo.classList.add("card-info");
+
     const removeBtn = document.createElement("button");
+    removeBtn.classList.add("remove-button", "card-button");
+
+    const cardButtons = document.createElement("div");
+    cardButtons.classList.add("card-buttons");
 
     cardTitle.textContent = `"${title}"`;
-    cardTitle.classList.add("book-card-title");
-    card.appendChild(cardTitle);
+    cardInfo.appendChild(cardTitle);
 
     cardAuthor.textContent = `by ${author}`;
-    cardAuthor.classList.add("book-card-author");
-    card.appendChild(cardAuthor);
+    cardInfo.appendChild(cardAuthor);
 
     cardPages.textContent = `${pages} pages`;
-    cardPages.classList.add("book-card-pages");
-    card.appendChild(cardPages);
+    cardInfo.appendChild(cardPages);
 
     cardStatus.textContent = read ? "Read" : "Not read";
     cardStatus.classList.add(read ? "read" : "not-read");
     cardStatus.type = "button";
-    cardStatus.classList.add("book-card-status");
 
     cardStatus.addEventListener("click", e => {
-        const index = e.currentTarget.parentNode.dataset.index;
         myLibrary[index].read = !myLibrary[index].read;
 
         renderLibrary(myLibrary);
     });
-    card.appendChild(cardStatus);
+    cardButtons.appendChild(cardStatus);
 
     removeBtn.textContent = "Remove the book";
     removeBtn.type = "button";
-    removeBtn.classList.add("remove-button");
     removeBtn.id = "removeBtn";
 
     removeBtn.addEventListener("click", e => {
-        const index = e.currentTarget.parentNode.dataset.index;
         myLibrary.splice(index, 1);
 
         renderLibrary(myLibrary);
     });
 
-    card.appendChild(removeBtn);
+    cardButtons.appendChild(removeBtn);
 
-    card.classList.add("book-card");
+    card.appendChild(cardInfo);
+    card.appendChild(cardButtons);
+    card.dataset.index = index;
+
     return card;
 }
 
