@@ -75,8 +75,7 @@ function createBookCard(title, author, pages, read) {
     removeBtn.id = "removeBtn";
 
     removeBtn.addEventListener("click", e => {
-        const index = removeBtn.dataset.index;
-        console.log(index);
+        const index = e.currentTarget.parentNode.dataset.index;
         myLibrary.splice(index, 1);
 
         renderLibrary(myLibrary);
