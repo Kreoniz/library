@@ -41,7 +41,7 @@ function createBookCard(title, author, pages, read) {
     const cardTitle = document.createElement("div");
     const cardAuthor = document.createElement("div");
     const cardPages = document.createElement("div");
-    const cardStatus = document.createElement("div");
+    const cardStatus = document.createElement("button");
     const removeBtn = document.createElement("button");
 
     cardTitle.textContent = `"${title}"`;
@@ -57,12 +57,23 @@ function createBookCard(title, author, pages, read) {
     card.appendChild(cardPages);
 
     cardStatus.textContent = read ? "Read" : "Not read";
+    cardStatus.classList.add(read ? "read" : "not-read");
+    cardStatus.type = "button";
     cardStatus.classList.add("book-card-status");
+
+    cardStatus.addEventListener("click", e => {
+        const index = e.currentTarget.parentNode.dataset.index;
+        myLibrary[index].read = !myLibrary[index].read;
+
+        renderLibrary(myLibrary);
+    });
     card.appendChild(cardStatus);
 
     removeBtn.textContent = "Remove the book";
+    removeBtn.type = "button";
     removeBtn.classList.add("remove-button");
     removeBtn.id = "removeBtn";
+
     removeBtn.addEventListener("click", e => {
         const index = removeBtn.dataset.index;
         console.log(index);

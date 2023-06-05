@@ -57,6 +57,31 @@ body {
     gap: 1em;
 }
 
+.book-card-status {
+    border-radius: 5px;
+    padding: 0.4em 0;
+
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+
+    background-color: var(--bg);
+
+    cursor: pointer;
+}
+
+.book-card-status.read {
+    --bg: lightgreen;
+}
+
+.book-card-status.not-read {
+    --bg: lightcoral;
+}
+
+.book-card-status:hover {
+    box-shadow: 0 0 10px var(--bg);
+}
+
 .mask {
     background-color: rgba(0, 0, 0, 0.8);
 
@@ -120,7 +145,7 @@ body {
   width: 1px;
 }
 
-.statusCheckbox {
+.status-checkbox {
     --bg: lightcoral;
     appearance: none;
 
@@ -138,7 +163,7 @@ body {
     cursor: pointer;
 }
 
-.statusCheckbox::before {
+.status-checkbox::before {
     content: "Not read";
     display: flex;
     justify-content: center;
@@ -146,15 +171,15 @@ body {
     align-items: center;
 }
 
-.statusCheckbox:checked {
+.status-checkbox:checked {
     --bg: lightgreen;
 }
 
-.statusCheckbox:hover {
+.status-checkbox:hover {
     box-shadow: 0 0 10px var(--bg);
 }
 
-.statusCheckbox:checked::before {
+.status-checkbox:checked::before {
     content: "Read";
 }
 
@@ -168,7 +193,7 @@ body {
     font-family: inherit;
 }
 
-.statusCheckbox,
+.status-checkbox,
 .add-button,
 .submit-button,
 .remove-button {
